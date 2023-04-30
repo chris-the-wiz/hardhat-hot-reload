@@ -1,7 +1,6 @@
 // This is a script for deploying your contracts. You can adapt it to deploy
 // yours, or create new ones.
 
-const { ethers } = require("hardhat");
 const path = require("path");
 
 async function main() {
@@ -31,17 +30,11 @@ async function main() {
 
   // We also save the contract's artifacts and address in the frontend directory
   saveFrontendFiles(token);
-
-
-
-
-
-
 }
 
 function saveFrontendFiles(token) {
   const fs = require("fs");
-  const contractsDir = path.join(__dirname, "..", "src", "contracts");
+  const contractsDir = path.join(__dirname, "..", "frontend", "src", "contracts");
 
   if (!fs.existsSync(contractsDir)) {
     fs.mkdirSync(contractsDir);
