@@ -1,24 +1,25 @@
-#FROM ethereum/solc:0.4.25
-#FROM node:10
 FROM  node
 
-# Create app directory
-WORKDIR /usr/src/app
+#create a working directory inside the container.
+WORKDIR /app
 
-# Install app dependencies
-# A wildcard is used to ensure both package.json AND package-lock.json are copied
-# where available (npm@5+)
-# COPY package*.json ./
+#Environment variables.
+ENV PATH /app/node_modules/.bin:$PATH
 
-# RUN npm install
-# RUN npm install -g solc@0.4.25 
+#copy the files from the host to the container.
+#COPY ./app/package.json /app
+#COPY ./app/package-lock.json /app
+COPY ./app ./
 
-# If you are building your code for production
-# RUN npm ci --only=production
+#install npm and react versions.
+RUN npm install --silent
 
-# Bundle app source
-# COPY . .
 
-EXPOSE 8080
-EXPOSE 3000
-#CMD [ "node", "server.js" ]
+#install nodemon to provide hot-reloading functionality.
+RUN npm install nodemon --save-dev
+
+
+
+#use nodemon to run the react application using npm. 
+CMD [ "nodemon", "--exec", "npm", "run", "serve", "||", "exit", "1"]
+

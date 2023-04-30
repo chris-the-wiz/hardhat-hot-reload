@@ -1,0 +1,20 @@
+version: "3"
+services:
+  web:
+    build: .
+    ports:
+      - "80:80"
+      - "3000:3000"
+      - "8080:8080"
+    volumes:
+      - ./app/src:/app/src
+      - ./app/contracts:/app/contracts
+      - ./app/test:/app/test
+      - ./app/tasks:/app/tasks
+      - ./app/scripts:/app/scripts
+      - ./app/package.json:/app/package.json
+      - ./app/package-lock.json:/app/package-lock.json
+      - ./app/hardhat.config:/app/hardhat.config
+      - ./app/webpack.config:/app/webpack.config
+#    environment:
+#      - WATCHPACK_POLLING=true
