@@ -4,6 +4,3 @@
 - Number of mounts for persistance. (How to simplify the docker-compose?) 
 - Fast hot reload
 - Hardhat boilerplate included
-- No Create React App used
-- Webpack config exposed
-
